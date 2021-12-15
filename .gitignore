@@ -55,4 +55,3 @@ dkms.conf
 *.lst
 bin/
 build/tmp-zwe
-deps/
