@@ -18,6 +18,7 @@ Sample result:
   testJM01 'XXX.YYY.JCL' 'ASMSSI80'
 
 testJM01 'JOE.TOOL.JCL' 'ASMSSI80'
+
 dsn (JOE.TOOL.JCL                                ), member(ASMSSI80)
 daRc ... (0)
 ddname (SYS00001)
