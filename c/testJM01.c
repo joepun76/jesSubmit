@@ -86,6 +86,13 @@ int main(int argc, char **argv)
                     putRecord(outACB, record, JCL_RECLEN);
                     }
                 char *jobID;
+
+                __asm(
+                       	" ENDREQ RPL=(%0) \n"
+                       	:
+                       	:"r"(rpl)
+                       	:);
+
                 jobID = (char *) rpl + RPL_RET_OFFSET;
                 printf("jobId (%-8.8s)\n", jobID);
                 closeACB(outACB, ACB_MODE_OUTPUT);
@@ -99,14 +106,5 @@ int main(int argc, char **argv)
     if (daRC != RC_DYNALLOC_OK) {
         printf("Unallocate error (%d) (%-8.8s)\n", daRC, &daDDname);
         }
-
-
-/*    memcpy(daDDname.name, ddnameResult, sizeof(ddnameResult)); 
-    daRC = dynallocUnallocDatasetByDDName(&daDDname, DYNALLOC_UNALLOC_FLAG_NONE,
-                                        &daSysRC, &daSysRSN);
-    if (daRC != RC_DYNALLOC_OK) {
-        printf("Unallocate error (%d) (%-8.8s)\n", daRC, &daDDname);
-        }
-*/
 
 }
